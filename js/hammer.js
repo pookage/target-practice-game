@@ -31,7 +31,30 @@ AFRAME.registerComponent("hammer", {
 			default: 10
 		}
 	},
-	play: function(){
+	init: function(){
 		console.log("HELLOW");
+		const animationTrigger = document.createElement("a-animation");
+		POOKAGE.utils.setAttributes(animationTrigger, {
+			"attribute": "rotation",
+			"from": "0 0 0",
+			"to": "50 0 0",
+			"dur": 3000,
+			"easing": "linear",
+			"begin": "reload",
+			"end": "fire"
+		});
+
+		const animationFire = document.createElement("a-animation");
+		POOKAGE.utils.setAttributes(animationFire, {
+			"attribute": "rotation",
+			"from": "50 0 0",
+			"to": "-50 0 0",
+			"dur": 950,
+			"easing": "linear",
+			"begin": "fire"
+		});
+		this.el.appendChild(animationTrigger);
+		this.el.appendChild(animationFire);
 	}
 });
+
