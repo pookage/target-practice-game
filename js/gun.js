@@ -72,6 +72,11 @@ AFRAME.registerComponent("gun", {
 			ball.setAttribute("range", hammerStrength);
 			ball.setAttribute("position", startPosition);
 			ball.setAttribute("direction", JSON.stringify(path));
+			hammer.emit("fire");
+			clearTimeout(this.reload);
+			this.reload = setTimeout(()=> {
+				hammer.emit("reload");
+			}, 950);
 			return ball;
 		}//createProjectile
 
