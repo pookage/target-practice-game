@@ -23,9 +23,7 @@ AFRAME.registerComponent("muzzle", {
 		}
 	},
 	play: function(){
-		const parent 	= this.el.parentEl;
 		const height 	= this.el.getAttribute("geometry").height;
-		const z 		= AFRAME.utils.entity.getComponentProperty(parent, "position.z");
 
 		AFRAME.utils.entity.setComponentProperty(this.el, "position.z", -height)
 	}
