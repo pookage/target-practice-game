@@ -3,43 +3,42 @@ AFRAME.registerPrimitive("a-projectile", {
 		projectile: {},
 		geometry: {
 			primitive: "sphere",
-			radius: 0.05
+			radius: 0.1
 		},
 		material: {
 			color: "green"
 		}
-	}, 
+	},
 	mappings: {
-		trajectory: "projectile.trajectory"
+		range: "projectile.range"
 	}
 });
 
 AFRAME.registerComponent("projectile", {
 	schema: {
-		trajectory: {
-			default: [],
-			parse: function(trajectory){
-				return JSON.parse(trajectory);
-			}
+		range: {
+			default: 30
 		}
 	},
-	play: function(){
-		const element 		= this.el;
-		const data 			= this.data;
-		const launcher 		= element.parentElement;
-		const trajectory 	= data.trajectory;
+	init: function(){
+		const speed = 1000 / 60;
+		this.tick = AFRAME.utils.throttleTick(this.throttledTick, speed, this);
 
-		
-		let position = 0;
-		this.interval = setInterval(() => {
-			if(position > trajectory.length){
-				clearInterval(this.interval);
-				launcher.removeChild(element);
-			}
-			else {
-				element.setAttribute("position", trajectory[position]);
-				position++;
-			}
-		}, 20)
+		console.log(this.el.object3D.getWorldPosition());
+
+	},//init
+	throttledTick: function(){
+		const projectile 	= this.el;
+		const range 		= this.data.range;
+		const distance 		= 0.1;
+		const currentZ 		= AFRAME.utils.entity.getComponentProperty(projectile, "position.z");
+
+		if(currentZ > -range){
+			AFRAME.utils.entity.setComponentProperty(projectile, "position.z", currentZ-distance);
+		} else {
+			projectile.parentElement.removeChild(projectile);
+		}
+
 	}
-})
+
+});

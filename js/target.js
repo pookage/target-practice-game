@@ -1,3 +1,4 @@
+
 AFRAME.registerPrimitive("a-target", {
 	defaultComponents: {
 		target: {},
@@ -9,14 +10,12 @@ AFRAME.registerPrimitive("a-target", {
 			color: "red"
 		}
 	},
-	mappings: {
-		
-	}
-
+	mappings: {}
 });
+
 AFRAME.registerComponent("target", {
 	schema: {},
 	init: function(){
-		const element = this.el;
+
 	}
-});
+})
