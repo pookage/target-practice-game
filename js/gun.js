@@ -5,12 +5,12 @@ AFRAME.registerPrimitive("a-gun", {
 			primitive: "box",
 			height: 0.1,
 			width: 0.1,
-			depth: 1
+			depth: 0.5
 		},
 		position: {
 			x: 0.3,
 			y: -0.3,
-			z: -0.5
+			z: -0.8
 		},
 		material: {
 			color: "blue"
