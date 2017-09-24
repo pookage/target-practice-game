@@ -67,7 +67,7 @@ AFRAME.registerComponent("gun", {
 			const hammerStrength = 10;
 			const ball = document.createElement("a-projectile");
 			ball.setAttribute("range", hammerStrength);
-			ball.setAttribute("direction", path)
+			ball.setAttribute("direction", JSON.stringify(path));
 			return ball;
 		}//createProjectile
 
