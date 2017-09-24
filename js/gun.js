@@ -53,7 +53,6 @@ AFRAME.registerComponent("gun", {
 		function calculateDirection(gun){
 
 			const muzzle 		= gun.getElementsByTagName("a-muzzle")[0];
-			const hammer 		= gun.getElementsByTagName("a-hammer")[0];
 
 			const bodyPos 		= gun.object3D.getWorldPosition();
 			const muzzlePos		= muzzle.object3D.getWorldPosition();
@@ -64,7 +63,8 @@ AFRAME.registerComponent("gun", {
 			return direction;
 		}//calculateDirection
 		function createProjectile(gun, path){
-			const hammerStrength = 30;
+			const hammer 		= gun.getElementsByTagName("a-hammer")[0];
+			const hammerStrength = hammer.components.hammer.data.strength;
 			const ball 			= document.createElement("a-projectile");
 			const startPosition = gun.object3D.getWorldPosition();
 			ball.setAttribute("range", hammerStrength);
