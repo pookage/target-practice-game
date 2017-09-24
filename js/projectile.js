@@ -3,7 +3,7 @@ AFRAME.registerPrimitive("a-projectile", {
 		projectile: {},
 		geometry: {
 			primitive: "sphere",
-			radius: 0.1
+			radius: 0.05
 		},
 		material: {
 			color: "green"
@@ -21,20 +21,18 @@ AFRAME.registerComponent("projectile", {
 		}
 	},
 	init: function(){
-		const speed = 1000 / 60;
-		this.tick = AFRAME.utils.throttleTick(this.throttledTick, speed, this);
-
-		console.log(this.el.object3D.getWorldPosition());
+		const fps = 1000 / 60;
+		this.tick = AFRAME.utils.throttleTick(this.throttledTick, fps, this);
 
 	},//init
 	throttledTick: function(){
 		const projectile 	= this.el;
 		const range 		= this.data.range;
-		const distance 		= 0.1;
+		const mps 			= 0.2;
 		const currentZ 		= AFRAME.utils.entity.getComponentProperty(projectile, "position.z");
 
 		if(currentZ > -range){
-			AFRAME.utils.entity.setComponentProperty(projectile, "position.z", currentZ-distance);
+			AFRAME.utils.entity.setComponentProperty(projectile, "position.z", currentZ-mps);
 		} else {
 			projectile.parentElement.removeChild(projectile);
 		}

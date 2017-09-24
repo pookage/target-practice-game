@@ -44,16 +44,30 @@ AFRAME.registerComponent("gun", {
 	},//init
  
 	fire: function(){
-		
-		const projectile = createProjectile();
+
+		const self = this;
+		const direction = calculateDirection(this.el);
+		const projectile = createProjectile(direction);
 		this.el.appendChild(projectile);
 
-		console.log(projectile, this.el)
+		function calculateDirection(gun){
 
-		function createProjectile(){
+			const muzzle 		= gun.getElementsByTagName("a-muzzle")[0];
+			const hammer 		= gun.getElementsByTagName("a-hammer")[0];
+
+			const bodyPos 		= gun.object3D.getWorldPosition();
+			const muzzlePos		= muzzle.object3D.getWorldPosition();
+			const direction 	= {	x: bodyPos.x - muzzlePos.x,
+									y: bodyPos.y - muzzlePos.y,
+									z: bodyPos.z - muzzlePos.z }; 
+			
+			return direction;
+		}//calculateDirection
+		function createProjectile(path){
 			const hammerStrength = 10;
 			const ball = document.createElement("a-projectile");
-			ball.setAttribute("range", hammerStrength)
+			ball.setAttribute("range", hammerStrength);
+			ball.setAttribute("direction", path)
 			return ball;
 		}//createProjectile
 
