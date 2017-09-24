@@ -2,17 +2,22 @@ AFRAME.registerPrimitive("a-hammer", {
 	defaultComponents: {
 		hammer: {},
 		geometry: {
-			height: 0.1,
-			width: 0.1,
-			depth: 0.2
+			height: 0.15,
+			width: 0.11,
+			depth: 0.03
 		},
 		position: {
-			x: 0.3,
-			y: -0.3,
-			z: -0.5			
+			x: 0,
+			y: 0,
+			z: 0.2			
 		},
 		material: {
-			color: "black"
+			color: "green"
+		},
+		rotation: {
+			x: 10,
+			y: 0,
+			z: 0
 		}
 	},
 	mappings: {
@@ -26,7 +31,7 @@ AFRAME.registerComponent("hammer", {
 			default: 10
 		}
 	},
-	init: function(){
+	play: function(){
 		console.log("HELLOW");
 	}
 });
