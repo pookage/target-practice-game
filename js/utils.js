@@ -1,5 +1,10 @@
-function setAttributes(element, attributes){
-	for(let key in attributes) {
-		element.setAttribute(key, attributes[key]);
+
+POOKAGE = {
+	utils: {
+		setAttributes: function setAttributes(element, attributes){
+			for(let key in attributes) {
+				element.setAttribute(key, attributes[key]);
+			}
+		}
 	}
-}//setAttributes
+}
