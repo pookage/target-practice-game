@@ -65,6 +65,8 @@ AFRAME.registerComponent("gun", {
 		function createProjectile(gun, path){
 			const hammer 		= gun.getElementsByTagName("a-hammer")[0];
 			const hammerStrength = hammer.components.hammer.data.strength;
+
+			console.log(hammerStrength);
 			const ball 			= document.createElement("a-projectile");
 			const startPosition = gun.object3D.getWorldPosition();
 			ball.setAttribute("range", hammerStrength);

@@ -7,6 +7,28 @@ AFRAME.registerPrimitive("a-projectile", {
 		},
 		material: {
 			color: "green"
+		},
+		animation__expand: {
+			property: "geometry.radius",
+			from: 0,
+			to: 2,
+			easing: "easeOutCirc",
+			startEvents: "explode"
+		},
+		animation__cool: {
+			property: "material.color",
+			from: "#ffff00",
+			to: "#ff0000",
+			easing: "easeInCirc",
+			startEvents: "explode"
+		},
+		animation__fadeOut: {
+			property: "material.opacity",
+			from: 1,
+			to: 0,
+			dur: 1000,
+			easing: "linear",
+			startEvents: "explode"
 		}
 	},
 	mappings: {
@@ -49,7 +71,14 @@ AFRAME.registerComponent("projectile", {
 			projectile.setAttribute("position", newPosition);
 			this.travelled += speed;
 		} else {
-			projectile.sceneEl.removeChild(projectile);
+			if(!this.exploded){
+				projectile.emit("explode");
+				AFRAME.utils.entity.setComponentProperty(projectile, "material.shader", "flat");
+				this.exploded = true;
+				setTimeout(() => {
+					projectile.sceneEl.removeChild(projectile);
+				}, 1000)
+			} 
 		}
 
 	}

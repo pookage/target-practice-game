@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Shooter</title>
 	<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="js/animation-component.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/target.js"></script>
 	<script src="js/explosion.js"></script>
@@ -18,35 +19,6 @@
 		<a-target
 			position="0 4 -20">
 		</a-target>
-
-		<a-sphere
-			position="0 0 -15"
-			material="color: yellow; shader: flat">
-			<a-animation
-				attribute="radius"
-				from="0"
-				to="5"
-				dur="2000"
-				repeat="indefinite"
-				easing="ease-out-circ">
-			</a-animation>
-			<a-animation
-				attribute="color"
-				from="yellow"
-				to="red"
-				dur="2000"
-				easing="ease-in-circ"
-				repeat="indefinite">
-			</a-animation>
-			<a-animation
-				attribute="opacity"
-				from="1"
-				to="0"
-				dur="2000"
-				easing="ease-in-circ"
-				repeat="indefinite">
-			</a-animation>
-		</a-sphere>
 
 		<a-camera
 			fov="60">

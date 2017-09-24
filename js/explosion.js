@@ -8,4 +8,4 @@ AFRAME.registerComponent("explosion", {
 	init: function(){
 
 	}
-})
+});

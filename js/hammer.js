@@ -28,7 +28,7 @@ AFRAME.registerPrimitive("a-hammer", {
 AFRAME.registerComponent("hammer", {
 	schema: {
 		strength: {
-			default: 10
+			default: 30
 		}
 	},
 	play: function(){
