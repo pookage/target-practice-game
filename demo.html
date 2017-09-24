@@ -9,6 +9,20 @@
 	<script src="js/hammer.js"></script>
 	<script src="js/muzzle.js"></script>
 	<script src="js/gun.js"></script>
+	<script>
+		window.addEventListener("load", init);
+
+		function init(){
+		/*	const hammer = document.getElementById("hammer");
+
+			hammer.addEventListener("mouseenter", () => {
+				hammer.emit("fire-on");
+			})
+			hammer.addEventListener("mouseleave", () => {
+				hammer.emit("fire-off");
+			})*/
+		}
+	</script>
 </head>
 <body>
 	<a-scene stats>
@@ -25,7 +39,23 @@
 
 			<a-gun>
 				<a-muzzle></a-muzzle>
-				<a-hammer></a-hammer>
+				<a-hammer
+					id="hammer">
+<!-- 					<a-animation
+						attribute="rotation"
+						from="0 0 0"
+						to="50 0 0"
+						dur="3000"
+						easing="linear">
+					</a-animation> -->
+					<a-animation
+						attribute="rotation"
+						from="50 0 0"
+						to="-50 0 0"
+						dur="950"
+						easing="linear">
+					</a-animation>
+				</a-hammer>
 			</a-gun>
 
 		</a-camera>
