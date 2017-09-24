@@ -18,7 +18,7 @@ AFRAME.registerPrimitive("a-projectile", {
 AFRAME.registerComponent("projectile", {
 	schema: {
 		range: {
-			default: 30
+			default: 50
 		},
 		direction: {
 			default: {x: 0, y: 0, z: -1},
@@ -30,21 +30,26 @@ AFRAME.registerComponent("projectile", {
 	init: function(){
 		const fps = 1000 / 60;
 		this.tick = AFRAME.utils.throttleTick(this.throttledTick, fps, this);
-
-
-		console.log(this.data.direction);
+		this.travelled = 0;
 
 	},//init
 	throttledTick: function(){
 		const projectile 	= this.el;
 		const range 		= this.data.range;
-		const mps 			= 0.2;
-		const currentZ 		= AFRAME.utils.entity.getComponentProperty(projectile, "position.z");
+		const direction 	= this.data.direction;
+		const speed 		= 1;
 
-		if(currentZ > -range){
-			AFRAME.utils.entity.setComponentProperty(projectile, "position.z", currentZ-mps);
+		if(this.travelled < range){
+			const currentPos 	= projectile.getAttribute("position");
+			const newPosition 	= {
+				x: currentPos.x - (direction.x*speed),
+				y: currentPos.y - (direction.y*speed),
+				z: currentPos.z - (direction.z*speed)
+			};
+			projectile.setAttribute("position", newPosition);
+			this.travelled += speed;
 		} else {
-			projectile.parentElement.removeChild(projectile);
+			projectile.sceneEl.removeChild(projectile);
 		}
 
 	}

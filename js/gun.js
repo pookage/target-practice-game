@@ -47,8 +47,8 @@ AFRAME.registerComponent("gun", {
 
 		const self = this;
 		const direction = calculateDirection(this.el);
-		const projectile = createProjectile(direction);
-		this.el.appendChild(projectile);
+		const projectile = createProjectile(this.el, direction);
+		this.el.sceneEl.appendChild(projectile);
 
 		function calculateDirection(gun){
 
@@ -63,10 +63,12 @@ AFRAME.registerComponent("gun", {
 			
 			return direction;
 		}//calculateDirection
-		function createProjectile(path){
-			const hammerStrength = 10;
-			const ball = document.createElement("a-projectile");
+		function createProjectile(gun, path){
+			const hammerStrength = 30;
+			const ball 			= document.createElement("a-projectile");
+			const startPosition = gun.object3D.getWorldPosition();
 			ball.setAttribute("range", hammerStrength);
+			ball.setAttribute("position", startPosition);
 			ball.setAttribute("direction", JSON.stringify(path));
 			return ball;
 		}//createProjectile
