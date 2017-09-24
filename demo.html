@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Target Practice Game</title>
+	<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="js/projectile-launcher.js"></script>
+	<script src="js/target.js"></script>
+</head>
+<body>
+	<a-scene>
+		
+		<a-target
+			position="0 1.6 -10">
+		</a-target>
+
+		<a-camera
+			fov="60">
+			<a-projectile-launcher
+				position="-0.5 -0.4 -1">
+			</a-projectile-launcher>
+		</a-camera>
+	</a-scene>
+</body>
+</html>
