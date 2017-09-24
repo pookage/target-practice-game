@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Target Practice Game</title>
 	<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="js/projectile.js"></script>
 	<script src="js/projectile-launcher.js"></script>
 	<script src="js/target.js"></script>
 </head>
@@ -16,8 +17,10 @@
 
 		<a-camera
 			fov="60">
+			<a-cursor>
+			</a-cursor>
 			<a-projectile-launcher
-				position="-0.5 -0.4 -1">
+				position="0.5 -0.4 -1">
 			</a-projectile-launcher>
 		</a-camera>
 	</a-scene>
