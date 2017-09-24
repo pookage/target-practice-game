@@ -44,16 +44,21 @@ AFRAME.registerComponent("gun", {
 	},//init
  
 	fire: function(){
-		
+		const self = this;
 		const projectile = createProjectile();
 		this.el.appendChild(projectile);
-
-		console.log(projectile, this.el)
+		//console.log(projectile, this.el)
 
 		function createProjectile(){
-			const hammerStrength = 10;
+			const hammer = document.createElement("a-hammer");
+			//self.data.strength
+			//console.log(hammer.data.strength);
+			console.dir(this.el.data);
+//			const strength = hammer.components.hammer.data.strength;
+//			console.log(strength);
 			const ball = document.createElement("a-projectile");
-			ball.setAttribute("range", hammerStrength)
+		//	console.log(ball.getAttribute);
+		//	ball.setAttribute("range", hammerStrength)
 			return ball;
 		}//createProjectile
 
